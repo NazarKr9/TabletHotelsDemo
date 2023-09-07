@@ -486,28 +486,6 @@ public class BrowserUtils {
     }
 
 
-
-    // random alphanumeric string
-        public static String generateRandomString(int length) {
-            Faker faker = new Faker();
-            return faker.regexify("[a-zA-Z0-9]{" + length + "}");
-        }
-
-        // Method to format the email address
-        public static String generateFormattedEmail(String email) {
-            String randomString = generateRandomString(6);
-            return email.replaceFirst("@", "+qainterview-" + randomString + "@");
-        }
-
-    public static void main(String[] args) {
-        // Example usage:
-        String originalEmail = "kravetsnazar9@gmail.com";
-        String formattedEmail = generateFormattedEmail(originalEmail);
-        System.out.println("Original Email: " + originalEmail);
-        System.out.println("Formatted Email: " + formattedEmail);
-    }
-
-
     }
 
 

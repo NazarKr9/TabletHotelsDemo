@@ -1,6 +1,8 @@
 package com.Tablet.pages;
 
+import com.Tablet.utilities.ConfigurationReader;
 import com.Tablet.utilities.Driver;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,10 +23,11 @@ public class TabletHomePage {
     public WebElement enterEmailInputBox;
 
     @FindBy(id = "RegisterNamesfirst_name")
-    public WebElement firstName;
+    public WebElement firstNameInput;
 
     @FindBy(id = "RegisterNameslast_name")
-    public WebElement lastName;
+    public WebElement lastNameInput;
+
 
 
     @FindBy(id = "RegisterPasswordpassword")
@@ -38,6 +41,38 @@ public class TabletHomePage {
 
     @FindBy(xpath = "//a[@href='/account']")
     public WebElement myInfoMenu;
+
+
+
+    // random alphanumeric string
+    public static String generateRandomString(int length) {
+        Faker faker = new Faker();
+        return faker.regexify("[a-zA-Z0-9]{" + length + "}");
+    }
+
+    // Method to format the email address
+    public static String generateFormattedEmail(String email) {
+        String randomString = generateRandomString(6);
+        return email.replaceFirst("@", "+qainterview-" + randomString + "@");
+    }
+
+    public  void registerNewUser(String email, String firstName, String lastName, String password) throws InterruptedException {
+        mainMenu.click();
+        registerButton.click();
+
+        String formattedEmail = TabletHomePage.generateFormattedEmail(email);
+        enterEmailInputBox.sendKeys(formattedEmail);
+        submitButton.click();
+        Thread.sleep(2000);
+
+        firstNameInput.sendKeys(ConfigurationReader.getProperty("firstName"));
+        lastNameInput.sendKeys(ConfigurationReader.getProperty("lastName"));
+        passwordInput.sendKeys(ConfigurationReader.getProperty("password"));
+        Thread.sleep(2000);
+
+        submitButton.click();
+        Thread.sleep(2000);
+    }
 
 
 

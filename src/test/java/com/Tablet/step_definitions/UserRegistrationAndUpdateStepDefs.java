@@ -2,7 +2,6 @@ package com.Tablet.step_definitions;
 
 import com.Tablet.pages.AccountPage;
 import com.Tablet.pages.TabletHomePage;
-import com.Tablet.utilities.BrowserUtils;
 import com.Tablet.utilities.ConfigurationReader;
 import com.Tablet.utilities.Driver;
 import io.cucumber.java.en.*;
@@ -31,7 +30,7 @@ public class UserRegistrationAndUpdateStepDefs {
     @When("user fills out the registration form with valid email,first,last name and password")
     public void user_fills_out_the_registration_form_with_valid_email_first_lastname_and_password() throws InterruptedException {
         //generating email as per request using dynamic email from Config.properties and method created in BrowserUtils
-        formattedEmail = BrowserUtils.generateFormattedEmail(ConfigurationReader.getProperty("email"));
+        formattedEmail = TabletHomePage.generateFormattedEmail(ConfigurationReader.getProperty("email"));
         System.out.println("formattedEmail = " + formattedEmail);
         // in case I need to store this email for future login
         tabletHomePage.enterEmailInputBox.sendKeys(formattedEmail);
@@ -43,7 +42,7 @@ public class UserRegistrationAndUpdateStepDefs {
         Thread.sleep(2000);
 
         tabletHomePage.firstName.sendKeys(ConfigurationReader.getProperty("firstName"));
-        tabletHomePage.lastName.sendKeys(ConfigurationReader.getProperty("lastName"));
+        tabletHomePage.lastNameInput.sendKeys(ConfigurationReader.getProperty("lastName"));
         tabletHomePage.submitButton.click();
         tabletHomePage.passwordInput.sendKeys(ConfigurationReader.getProperty("password"));
         Thread.sleep(2000);
