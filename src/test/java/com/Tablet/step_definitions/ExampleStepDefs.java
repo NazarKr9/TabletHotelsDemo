@@ -1,6 +1,6 @@
-package com.CompanyName.step_definitions;
+package com.Tablet.step_definitions;
 
-import com.CompanyName.utilities.Driver;
+import com.Tablet.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;

@@ -1,4 +1,4 @@
-package com.CompanyName.utilities;
+package com.Tablet.utilities;
 
 import java.io.FileInputStream;
 import java.io.IOException;

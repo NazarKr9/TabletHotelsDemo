@@ -1,4 +1,4 @@
-package com.CompanyName.runners;
+package com.Tablet.runners;
 
 
 import io.cucumber.junit.Cucumber;
@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "@target/rerun.txt",
-        glue = "com/CompanyName/step_definitions"
+        glue = "com/Tablet/step_definitions"
 )
 public class FailedTestRunner {}

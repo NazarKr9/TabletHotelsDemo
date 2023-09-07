@@ -1,4 +1,4 @@
-package com.CompanyName.runners;
+package com.Tablet.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -12,9 +12,9 @@ import org.junit.runner.RunWith;
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
         features = "src/test/resources/features",
-        glue = "com/CompanyName/step_definitions",
+        glue = "com/Tablet/step_definitions",
         dryRun = false,
-        tags = "",
+        tags = "@Tablet",
         publish = true //generating a report with public link
 
 
