@@ -15,7 +15,7 @@ public class AccountPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "//div[@class='Button__label']")
+    @FindBy(xpath = "//button[@class='Button Button RegisterModal__ContinueBtn RegisterModal__blackButton']")
     public WebElement gotItButton;
 
     @FindBy(xpath = "//a[@href='/account/yourinfo']")
@@ -29,9 +29,6 @@ public class AccountPage {
 
     @FindBy(xpath = "//span[text()='Sign Out']")
     public WebElement signOutButton;
-
-    @FindBy(xpath = "//img[@alt='crop-zoom-out']")
-    public WebElement zoomOutImageUploadBtn;
 
     @FindBy(xpath = "//button[@class='Cropper__updatePhotoBtn']/span[text()='Choose']")
     public WebElement chooseButton;

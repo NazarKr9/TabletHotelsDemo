@@ -65,8 +65,8 @@ public class UserRegAndAccUpdateStepDefs {
 
     @Then("user updates their bio with new information")
     public void user_updates_their_bio_with_new_information() throws InterruptedException {
-        Driver.getDriver().navigate().refresh();
-        //accountPage.gotItButton.click();
+
+        accountPage.gotItButton.click();
         tabletHomePage.mainMenu.click();
         tabletHomePage.myInfoMenu.click();
 
@@ -75,10 +75,6 @@ public class UserRegAndAccUpdateStepDefs {
         // Generate a random sentence
         String randomText = faker.lorem().sentence();
 
-        // Truncate the text to 180 characters if it's longer
-        if (randomText.length() > 180) {
-            randomText = randomText.substring(0, 180);
-        }
         accountPage.bioTextField.sendKeys(randomText);
         Thread.sleep(3000);
 
@@ -89,9 +85,10 @@ public class UserRegAndAccUpdateStepDefs {
 
         //uploading image
         accountPage.chooseButton.click();
-
+        //------------------------------------------------
         //change this PATH to the image on your local MAC
-        String filePath = "/Users/nazarkravets/IdeaProjects/CucumberJunitBlank/src/test/resources/images/NewProfilePhoto.jpg";
+        //------------------------------------------------
+        String filePath = "/Users/nazarkravets/Downloads/NewProfilePhoto.jpg";
         accountPage.uploadFileWithRobot(filePath);//the robot method is set for macOS shortcuts
         accountPage.imDoneButton.click();
         accountPage.saveProfileButton.click();
