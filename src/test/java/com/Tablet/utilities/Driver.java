@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -53,6 +55,12 @@ public class Driver {
                     driverPool.set(new FirefoxDriver());
                     driverPool.get().manage().window().maximize();
                   //  driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                    break;
+                case "safari": // Add Safari case
+                    SafariOptions safariOptions = new SafariOptions();
+                    // Add Safari-specific options here
+                    driverPool.set(new SafariDriver(safariOptions));
+                    // Other Safari-specific configuration if needed
                     break;
             }
 
