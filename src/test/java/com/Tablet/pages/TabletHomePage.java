@@ -16,8 +16,11 @@ public class TabletHomePage {
     @FindBy(xpath = "//div[@class='QuickMenu__launch']")
     public WebElement mainMenu;
 
-    @FindBy(xpath= "//span[text()='Register']")
+    @FindBy(xpath = "//span[text()='Register']")
     public WebElement registerButton;
+
+    @FindBy(xpath = "//span[text()='Sign In']")
+    public WebElement signInButton;
 
     @FindBy(id = "RegisterEmailemail")
     public WebElement enterEmailInputBox;
@@ -27,8 +30,6 @@ public class TabletHomePage {
 
     @FindBy(id = "RegisterNameslast_name")
     public WebElement lastNameInput;
-
-
 
     @FindBy(id = "RegisterPasswordpassword")
     public WebElement passwordInput;
@@ -56,43 +57,14 @@ public class TabletHomePage {
         return email.replaceFirst("@", "+qainterview-" + randomString + "@");
     }
 
-    public  void registerNewUser(String email, String firstName, String lastName, String password) throws InterruptedException {
-        mainMenu.click();
-        registerButton.click();
+    public void fillAndSubmitRegistrationForm() {
+        String firstName = ConfigurationReader.getProperty("firstName");
+        String lastName = ConfigurationReader.getProperty("lastName");
 
-        String formattedEmail = TabletHomePage.generateFormattedEmail(email);
-        enterEmailInputBox.sendKeys(formattedEmail);
+        firstNameInput.sendKeys(firstName);
+        lastNameInput.sendKeys(lastName);
         submitButton.click();
-        Thread.sleep(2000);
-
-        firstNameInput.sendKeys(ConfigurationReader.getProperty("firstName"));
-        lastNameInput.sendKeys(ConfigurationReader.getProperty("lastName"));
-        passwordInput.sendKeys(ConfigurationReader.getProperty("password"));
-        Thread.sleep(2000);
-
-        submitButton.click();
-        Thread.sleep(2000);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -5,6 +5,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 public class Driver {
 
     //create a private constructor to remove access to this object
@@ -54,7 +57,7 @@ public class Driver {
             }
 
         }
-
+        driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         return driverPool.get();
 
     }
